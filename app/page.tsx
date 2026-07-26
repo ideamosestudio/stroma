@@ -69,6 +69,7 @@ const experience = [
 const LINKEDIN_URL_PLACEHOLDER = "#linkedin-pendiente";
 const CONTACT_EMAIL_PLACEHOLDER = "correo pendiente";
 const CONTACT_PHONE_PLACEHOLDER = "teléfono pendiente";
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 function TechnicalMark({ variant = "cycle" }: { variant?: "cycle" | "grid" }) {
   return (
@@ -110,7 +111,7 @@ export default function Home() {
     <>
       <header className={`site-header ${scrolled ? "site-header--scrolled" : ""}`}>
         <a className="brand" href="#inicio" aria-label="STROMA, ir al inicio">
-          <img src="/stroma-logo.png" alt="STROMA" />
+          <img src={`${BASE_PATH}/stroma-logo.png`} alt="STROMA" />
         </a>
 
         <button
@@ -385,7 +386,7 @@ export default function Home() {
 
       <footer className="site-footer">
         <div className="site-footer__brand">
-          <img src="/stroma-logo.png" alt="STROMA" />
+          <img src={`${BASE_PATH}/stroma-logo.png`} alt="STROMA" />
           <span>Gestión estratégica de servicios críticos.</span>
         </div>
         <nav aria-label="Navegación de pie de página">
