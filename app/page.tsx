@@ -66,9 +66,10 @@ const experience = [
   },
 ];
 
-const LINKEDIN_URL_PLACEHOLDER = "#linkedin-pendiente";
-const CONTACT_EMAIL_PLACEHOLDER = "correo pendiente";
-const CONTACT_PHONE_PLACEHOLDER = "teléfono pendiente";
+const LINKEDIN_URL = "https://www.linkedin.com/in/helviofrieiro";
+const CONTACT_EMAIL = "info@transformationendtoend.com";
+const CONTACT_PHONE = "+54 9 11 3011-6835";
+const CONTACT_ADDRESS = "Guayrá 2249 · Ciudad Autónoma de Buenos Aires";
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 function TechnicalMark({ variant = "cycle" }: { variant?: "cycle" | "grid" }) {
@@ -97,6 +98,11 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.classList.toggle("menu-open", menuOpen);
+    return () => document.body.classList.remove("menu-open");
+  }, [menuOpen]);
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -137,6 +143,9 @@ export default function Home() {
           <a href="#como-trabajamos" onClick={closeMenu}>Cómo trabajamos</a>
           <a href="#experiencia" onClick={closeMenu}>Experiencia</a>
           <a href="#contacto" onClick={closeMenu}>Contacto</a>
+          <a className="main-nav__cta" href="#contacto" onClick={closeMenu}>
+            Solicitar una reunión
+          </a>
         </nav>
 
         <a className="button button--header" href="#contacto">
@@ -246,8 +255,9 @@ export default function Home() {
                   <span className="aspect-card__number">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <span className={`line-icon line-icon--${(index % 4) + 1}`} aria-hidden="true">
+                  <span className={`line-icon line-icon--${index + 1}`} aria-hidden="true">
                     <i />
+                    <b />
                   </span>
                   <p>{item}</p>
                 </li>
@@ -322,8 +332,12 @@ export default function Home() {
                 estratégicamente los servicios que respaldan la operación de
                 nuestros clientes.
               </p>
-              {/* PLACEHOLDER: reemplazar por la URL real de LinkedIn. */}
-              <a className="button button--muted" href={LINKEDIN_URL_PLACEHOLDER}>
+              <a
+                className="button button--muted"
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noreferrer"
+              >
                 LinkedIn <span aria-hidden="true">↗</span>
               </a>
             </div>
@@ -347,10 +361,19 @@ export default function Home() {
             <p>
               Complete el formulario para solicitar una reunión con STROMA.
             </p>
-            <div className="contact__pending">
-              {/* PLACEHOLDERS: reemplazar cuando el cliente entregue los datos. */}
-              <span>Email / {CONTACT_EMAIL_PLACEHOLDER}</span>
-              <span>WhatsApp / {CONTACT_PHONE_PLACEHOLDER}</span>
+            <div className="contact__details">
+              <a href={`mailto:${CONTACT_EMAIL}`}>
+                <span>Email</span>
+                <strong>{CONTACT_EMAIL}</strong>
+              </a>
+              <a href={`tel:${CONTACT_PHONE.replace(/\s/g, "")}`}>
+                <span>Teléfono</span>
+                <strong>{CONTACT_PHONE}</strong>
+              </a>
+              <div>
+                <span>Dirección</span>
+                <strong>{CONTACT_ADDRESS}</strong>
+              </div>
             </div>
           </div>
 
@@ -395,9 +418,16 @@ export default function Home() {
           <a href="#experiencia">Experiencia</a>
           <a href="#contacto">Contacto</a>
         </nav>
-        {/* PLACEHOLDER: reemplazar por la URL real de LinkedIn. */}
-        <a href={LINKEDIN_URL_PLACEHOLDER}>LinkedIn</a>
+        <a href={LINKEDIN_URL} target="_blank" rel="noreferrer">LinkedIn</a>
         <span>© {new Date().getFullYear()} STROMA</span>
+        <a
+          className="site-footer__credit"
+          href="https://www.ideamos.com.ar"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Un desarrollo de Estudio Ideamos
+        </a>
       </footer>
     </>
   );
