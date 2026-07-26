@@ -1,16 +1,21 @@
 # STROMA
 
-Repositorio base para el sitio web de STROMA.
+Home institucional de STROMA.
 
-## Estado
+## Contenido fuente local
 
-Preparado para recibir:
+- `content/WEB.docx`: contenido entregado por el cliente.
+- `content/DESIGN.md`: referencia estética y sistema visual.
 
-- información y contenidos;
-- identidad visual y archivos;
-- referencias;
-- requisitos funcionales;
-- prompts e instrucciones.
+La carpeta `content/` se conserva únicamente en el entorno local y no se
+publica en el repositorio.
 
-Todavía no se eligieron tecnologías, estructura, diseño ni funcionalidades.
+El sitio conserva placeholders explícitos para correo electrónico, teléfono o
+WhatsApp, LinkedIn y la acción de envío del formulario.
 
+## Desarrollo
+
+```bash
+npm install
+npm run dev
+```
