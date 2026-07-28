@@ -36,8 +36,16 @@ test("renders the STROMA Home with the client content", async () => {
     html,
     /Los servicios críticos requieren una gestión estratégica\./,
   );
-  assert.match(html, /Más que un servicio, una operación crítica\./);
-  assert.match(html, /Experiencia STROMA/);
+  assert.match(
+    html,
+    /El desempeño del servicio depende tanto del proveedor como de quien lo contrata\./,
+  );
+  assert.match(
+    html,
+    /Gestionamos estratégicamente cada etapa del ciclo de vida del servicio\./,
+  );
+  assert.match(html, /Dónde generamos valor\./);
+  assert.match(html, /Experiencia que se convierte en metodología\./);
   assert.match(html, /Helvio Frieiro/);
   assert.match(html, /Solicitar una reunión/);
 });
@@ -50,4 +58,10 @@ test("does not render reference or filler content", async () => {
   assert.doesNotMatch(html, /lorem ipsum/i);
   assert.doesNotMatch(html, /Your site is taking shape/i);
   assert.doesNotMatch(html, /codex-preview/i);
+  assert.doesNotMatch(html, /01 \/ Por qué STROMA/);
+  assert.doesNotMatch(html, /02 \/ Operación crítica/);
+  assert.doesNotMatch(html, /03 \/ Cómo trabajamos/);
+  assert.doesNotMatch(html, /04 \/ Experiencia STROMA/);
+  assert.doesNotMatch(html, /05 \/ Contacto/);
+  assert.doesNotMatch(html, /operacion-critica/);
 });

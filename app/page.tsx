@@ -3,73 +3,88 @@
 /* eslint-disable @next/next/no-img-element */
 import { FormEvent, useEffect, useState } from "react";
 
-const strategicAspects = [
-  "Cumplimiento de los niveles de servicio (SLA) y estándares operativos.",
-  "Inocuidad alimentaria.",
-  "Seguridad de las personas.",
-  "Satisfacción de los usuarios.",
-  "Continuidad operacional y gestión de contingencias.",
-  "Seguridad de las instalaciones y del equipamiento.",
-  "Sostenibilidad y cuidado del medio ambiente.",
-  "Alineación con las políticas y el posicionamiento de la organización.",
+type IconKind =
+  | "orbit"
+  | "grid"
+  | "layers"
+  | "axis"
+  | "diamond"
+  | "pulse"
+  | "shield"
+  | "balance";
+
+const valueAreas: Array<{ title: string; icon: IconKind }> = [
+  { title: "Salud", icon: "orbit" },
+  { title: "Educación", icon: "grid" },
+  { title: "Industria", icon: "layers" },
+  { title: "Servicios", icon: "axis" },
+  { title: "Minería", icon: "diamond" },
+  { title: "Energía", icon: "pulse" },
 ];
 
-const sectors = [
-  "Salud",
-  "Educación",
-  "Industria",
-  "Minería",
-  "Oil & Gas",
-  "Hospitalidad",
-  "Campamentos remotos",
+const servicePriorities: Array<{ title: string; icon: IconKind }> = [
+  { title: "Inocuidad alimentaria", icon: "orbit" },
+  { title: "Seguridad de las personas", icon: "shield" },
+  { title: "Satisfacción de los usuarios", icon: "pulse" },
+  { title: "Eficiencia y sostenibilidad económica", icon: "balance" },
+  { title: "Continuidad operacional", icon: "axis" },
+  { title: "Seguridad de instalaciones y equipamiento", icon: "grid" },
+  { title: "Sostenibilidad ambiental", icon: "diamond" },
+  { title: "Alineación con los objetivos del negocio", icon: "layers" },
 ];
 
 const lifecycle = [
   {
     title: "Diagnóstico",
-    text: "Analizamos la situación actual, los objetivos de la organización y las oportunidades de mejora.",
+    text: "Comprendemos el contexto, identificamos oportunidades de mejora y accionamos sobre riesgos y aspectos críticos que requieren atención inmediata.",
   },
   {
     title: "Diseño del Servicio",
-    text: "Definimos el modelo de servicio más adecuado según las necesidades de cada organización.",
+    text: "Diseñamos un modelo de servicio alineado con los objetivos del negocio, incorporando las prioridades que definirán su desempeño.",
   },
   {
     title: "Selección de Proveedores",
-    text: "Diseñamos y acompañamos procesos de selección objetivos y transparentes.",
+    text: "Implementamos procesos de selección objetivos y transparentes para identificar al proveedor más adecuado para cada organización.",
   },
   {
     title: "Implementación y Transición",
-    text: "Coordinamos la puesta en marcha del servicio asegurando una transición ordenada.",
+    text: "Coordinamos la puesta en marcha del servicio para asegurar una transición ordenada y minimizar riesgos operacionales.",
   },
   {
     title: "Gestión del Desempeño",
-    text: "Medimos resultados mediante indicadores, promoviendo el cumplimiento del contrato y la mejora continua del servicio.",
+    text: "Monitoreamos el desempeño acordado mediante indicadores, impulsando la mejora continua y manteniendo el servicio alineado con los objetivos del negocio.",
   },
 ];
 
-const experience = [
+const experienceCards: Array<{ title: string; text: string; icon: IconKind }> = [
   {
-    value: "+25 años",
-    text: "Liderando empresas de servicios de alimentación y Facilities Management.",
+    title: "Conocimiento del servicio",
+    text: "Más de 25 años liderando empresas prestadoras de servicios de alimentación y Facility Management.",
+    icon: "orbit",
   },
   {
-    value: "Latinoamérica",
-    text: "Experiencia regional en operaciones de alta complejidad.",
+    title: "Latinoamérica",
+    text: "Experiencia ejecutiva en operaciones de alta complejidad en América Latina.",
+    icon: "grid",
   },
   {
-    value: "Visión integral",
-    text: "Desde la estrategia hasta la gestión del desempeño.",
+    title: "Visión integral del negocio",
+    text: "Desde la estrategia y la contratación hasta la gestión del desempeño.",
+    icon: "axis",
   },
   {
-    value: "Metodología propia",
+    title: "Metodología propia",
     text: "Gestión estratégica del ciclo de vida del servicio.",
+    icon: "layers",
   },
 ];
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/helviofrieiro";
-const CONTACT_EMAIL = "info@transformationendtoend.com";
+const CONTACT_EMAIL = "info@stromaservices.com";
 const CONTACT_PHONE = "+54 9 11 3011-6835";
 const CONTACT_ADDRESS = "Guayrá 2249 · Ciudad Autónoma de Buenos Aires";
+const WHATSAPP_URL =
+  "https://wa.me/5491130116835?text=Hola%2C%20quisiera%20solicitar%20una%20reuni%C3%B3n%20con%20STROMA.";
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 function TechnicalMark({ variant = "cycle" }: { variant?: "cycle" | "grid" }) {
@@ -87,10 +102,38 @@ function TechnicalMark({ variant = "cycle" }: { variant?: "cycle" | "grid" }) {
   );
 }
 
+function GeometricIcon({
+  kind,
+  compact = false,
+}: {
+  kind: IconKind;
+  compact?: boolean;
+}) {
+  return (
+    <span
+      className={`geo-icon geo-icon--${kind}${compact ? " geo-icon--compact" : ""}`}
+      aria-hidden="true"
+    >
+      <i />
+      <b />
+    </span>
+  );
+}
+
+function WhatsAppIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.4-4.3a8.5 8.5 0 1 1 15.6-4.5Z" />
+      <path d="M8.4 7.5c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.5l.8 1.9c.1.3 0 .5-.2.7l-.6.7c-.2.2-.1.4 0 .6.6 1.1 1.5 2 2.6 2.6.2.1.4.2.6 0l.8-1c.2-.2.4-.3.7-.2l1.8.9c.3.2.5.3.5.5 0 .3-.1 1.5-.8 2.1-.6.6-1.4.9-2.3.7-1.1-.2-2.6-.8-4.4-2.4-2-1.8-3.1-4.1-3.2-5.3-.1-.8.2-1.4.5-1.9Z" />
+    </svg>
+  );
+}
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [formMessage, setFormMessage] = useState("");
+  const [contactRegionVisible, setContactRegionVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24);
@@ -103,6 +146,24 @@ export default function Home() {
     document.body.classList.toggle("menu-open", menuOpen);
     return () => document.body.classList.remove("menu-open");
   }, [menuOpen]);
+
+  useEffect(() => {
+    const regions = [
+      document.querySelector("#contacto"),
+      document.querySelector(".site-footer"),
+    ].filter((region): region is Element => region !== null);
+    const visibleRegions = new Set<Element>();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) visibleRegions.add(entry.target);
+        else visibleRegions.delete(entry.target);
+      });
+      setContactRegionVisible(visibleRegions.size > 0);
+    });
+
+    regions.forEach((region) => observer.observe(region));
+    return () => observer.disconnect();
+  }, []);
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -157,135 +218,94 @@ export default function Home() {
         <section className="hero blueprint-section" id="inicio">
           <div className="hero__grid" aria-hidden="true" />
           <div className="hero__content reveal">
-            <span className="eyebrow">Gestión estratégica · Ciclo de vida</span>
+            <span className="eyebrow">Metodología propia · Decisiones de alto impacto</span>
             <h1>Los servicios críticos requieren una gestión estratégica.</h1>
             <p>
-              Gestionamos la contratación y el desempeño de servicios de
-              alimentación y soluciones integrales para campamentos remotos.
+              Acompañamos a las organizaciones en la contratación y el desempeño
+              de los servicios de alimentación y Facility Management.
             </p>
             <a className="button" href="#contacto">Solicitar una reunión</a>
           </div>
           <div className="hero__visual">
             <TechnicalMark />
-            <span className="hero__annotation hero__annotation--one">operación</span>
-            <span className="hero__annotation hero__annotation--two">continuidad</span>
-            <span className="hero__annotation hero__annotation--three">desempeño</span>
           </div>
-          <a className="scroll-cue" href="#por-que-stroma" aria-label="Continuar a Por qué STROMA">
-            <span>Explorar</span>
+          <a
+            className="scroll-cue"
+            href="#por-que-stroma"
+            aria-label="Conocer STROMA"
+          >
+            <span>Conocer STROMA</span>
             <i aria-hidden="true" />
           </a>
         </section>
 
         <section className="why section-shell blueprint-section" id="por-que-stroma">
           <div className="section-heading reveal">
-            <span className="section-index">01 / Por qué STROMA</span>
-            <h2>Servicios que sostienen la operación.</h2>
+            <span className="section-index">Por qué STROMA</span>
+            <h2>
+              El desempeño del servicio depende tanto del proveedor como de quien
+              lo contrata.
+            </h2>
           </div>
 
           <div className="why__layout">
             <div className="why__copy reveal">
-              <p className="lead">
-                Ya sea en una institución de salud, una operación minera, una
-                planta industrial, un establecimiento educativo, un hotel o un
-                campamento remoto, los servicios de alimentación y soluciones
-                integrales son un eslabón clave en la organización.
+              <p>
+                En sectores donde los servicios de alimentación y Facility
+                Management son críticos para la operación, las decisiones sobre
+                su contratación y gestión impactan directamente en la continuidad
+                operacional, la seguridad, la experiencia de las personas y los
+                resultados del negocio.
               </p>
               <p>
-                Su desempeño impacta directamente en la continuidad operacional,
-                la seguridad, la experiencia de las personas y los resultados del
-                negocio.
+                Por eso, el desempeño del servicio no depende únicamente del
+                proveedor, sino también de las decisiones que se toman durante
+                todo su ciclo de vida.
               </p>
-              <p>
-                Gestionarlos estratégicamente permite reducir riesgos, optimizar
-                recursos sin afectar la experiencia de los usuarios y contribuir
-                al cumplimiento de los objetivos de la organización.
+              <p className="why__value">
+                Ahí es donde STROMA genera valor: ayudando a las organizaciones a
+                diseñar, contratar y gestionar servicios alineados con los
+                objetivos del negocio.
               </p>
             </div>
 
-            <div className="impact-map reveal" aria-label="Impactos estratégicos">
-              {[
-                "Continuidad operacional",
-                "Seguridad",
-                "Experiencia de las personas",
-                "Resultados del negocio",
-                "Reducción de riesgos",
-                "Optimización de recursos",
-                "Cumplimiento de objetivos",
-              ].map((item, index) => (
-                <div className="impact-map__item" key={item}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <strong>{item}</strong>
-                </div>
+            <div className="value-areas reveal">
+              <h3>Dónde generamos valor.</h3>
+              <div className="value-areas__grid">
+                {valueAreas.map((item) => (
+                  <article className="value-card" key={item.title}>
+                    <GeometricIcon kind={item.icon} compact />
+                    <h4>{item.title}</h4>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="priorities">
+            <p className="priorities__intro reveal">
+              Las decisiones que definen el servicio integran prioridades como:
+            </p>
+            <div className="priorities__grid">
+              {servicePriorities.map((item) => (
+                <article className="priority-card reveal" key={item.title}>
+                  <GeometricIcon kind={item.icon} />
+                  <h3>{item.title}</h3>
+                </article>
               ))}
             </div>
-          </div>
-
-          <div className="why__closing reveal">
-            <span className="annotation-dot" aria-hidden="true" />
-            <p>
-              STROMA gestiona estratégicamente la contratación y el desempeño de
-              estos servicios durante todo su ciclo de vida, trabajando junto a
-              cada organización.
-            </p>
-          </div>
-        </section>
-
-        <section className="critical section-shell blueprint-section" id="operacion-critica">
-          <div className="critical__intro reveal">
-            <span className="section-index">02 / Operación crítica</span>
-            <h2>Más que un servicio, una operación crítica.</h2>
-            <p>
-              Una contratación efectiva comienza definiendo claramente los
-              aspectos que impactan en las personas, la operación y los objetivos
-              de la organización. Estos criterios deben incorporarse desde el
-              diseño del servicio, reflejarse en el proceso de contratación y
-              mantenerse durante toda la gestión.
-            </p>
-          </div>
-
-          <div className="aspects">
-            <div className="aspects__label">
-              <span>Aspectos estratégicos del servicio</span>
-              <i aria-hidden="true" />
-            </div>
-            <ol className="aspects__grid">
-              {strategicAspects.map((item, index) => (
-                <li className="aspect-card reveal" key={item}>
-                  <span className="aspect-card__number">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span className={`line-icon line-icon--${index + 1}`} aria-hidden="true">
-                    <i />
-                    <b />
-                  </span>
-                  <p>{item}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-
-          <div className="sectors reveal">
-            <div className="sectors__heading">
-              <span className="section-index">Sectores</span>
-              <h3>Un mismo desafío, diferentes sectores</h3>
-            </div>
-            <ul>
-              {sectors.map((sector) => <li key={sector}>{sector}</li>)}
-            </ul>
           </div>
         </section>
 
         <section className="process section-shell blueprint-section" id="como-trabajamos">
           <div className="process__heading reveal">
             <div>
-              <span className="section-index">03 / Cómo trabajamos</span>
-              <h2>Cómo trabajamos</h2>
+              <span className="section-index">Cómo trabajamos</span>
+              <h2>
+                Gestionamos estratégicamente cada etapa del ciclo de vida del
+                servicio. Transformamos decisiones en resultados.
+              </h2>
             </div>
-            <p>
-              El valor de un servicio se construye a través de la gestión
-              estratégica de cada etapa de su ciclo de vida.
-            </p>
           </div>
 
           <div className="lifecycle" aria-label="Ciclo de vida del servicio">
@@ -314,23 +334,22 @@ export default function Home() {
             </div>
 
             <div className="experience__copy reveal">
-              <span className="section-index">04 / Experiencia STROMA</span>
+              <span className="section-index">Experiencia STROMA</span>
               <h2>Experiencia que se convierte en metodología.</h2>
-              <p className="lead">
+              <p className="experience__intro">
                 STROMA fue fundada por Helvio Frieiro, ejecutivo con más de 25
-                años de experiencia liderando empresas prestadoras de servicios
-                de alimentación y Facilities Management en América Latina.
+                años de experiencia liderando empresas de servicios de
+                alimentación y Facility Management en América Latina.
               </p>
               <p>
-                Su trayectoria incluye la dirección de operaciones complejas,
-                procesos de contratación, implementación y gestión de servicios
-                para organizaciones de distintos sectores, aportando una visión
-                integral del negocio y del funcionamiento de estos servicios.
+                Su trayectoria en operaciones complejas, procesos de contratación
+                y gestión estratégica de servicios permitió desarrollar una
+                visión integral del ciclo de vida del servicio.
               </p>
               <p>
-                Hoy, esa experiencia se traduce en una metodología para gestionar
-                estratégicamente los servicios que respaldan la operación de
-                nuestros clientes.
+                Hoy, esa experiencia se transforma en una metodología propia que
+                ayuda a las organizaciones a tomar mejores decisiones y maximizar
+                el valor de sus servicios.
               </p>
               <a
                 className="button button--muted"
@@ -338,16 +357,16 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                LinkedIn <span aria-hidden="true">↗</span>
+                Ver perfil en LinkedIn <span aria-hidden="true">↗</span>
               </a>
             </div>
           </div>
 
           <div className="experience__metrics">
-            {experience.map((item, index) => (
-              <article className="metric reveal" key={item.value}>
-                <span className="metric__index">{String(index + 1).padStart(2, "0")}</span>
-                <h3>{item.value}</h3>
+            {experienceCards.map((item) => (
+              <article className="metric reveal" key={item.title}>
+                <GeometricIcon kind={item.icon} />
+                <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </article>
             ))}
@@ -356,17 +375,15 @@ export default function Home() {
 
         <section className="contact section-shell blueprint-section" id="contacto">
           <div className="contact__intro reveal">
-            <span className="section-index">05 / Contacto</span>
+            <span className="section-index">Contacto</span>
             <h2>Conversemos sobre los servicios que respaldan su operación.</h2>
-            <p>
-              Complete el formulario para solicitar una reunión con STROMA.
-            </p>
+            <p>Complete el formulario para solicitar una reunión con STROMA.</p>
             <div className="contact__details">
               <a href={`mailto:${CONTACT_EMAIL}`}>
                 <span>Email</span>
                 <strong>{CONTACT_EMAIL}</strong>
               </a>
-              <a href={`tel:${CONTACT_PHONE.replace(/\s/g, "")}`}>
+              <a href={`tel:${CONTACT_PHONE.replace(/[^\d+]/g, "")}`}>
                 <span>Teléfono</span>
                 <strong>{CONTACT_PHONE}</strong>
               </a>
@@ -429,6 +446,18 @@ export default function Home() {
           Un desarrollo de Estudio Ideamos
         </a>
       </footer>
+
+      <a
+        className={`whatsapp-float${
+          contactRegionVisible ? " whatsapp-float--clear" : ""
+        }`}
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Solicitar una reunión con STROMA por WhatsApp"
+      >
+        <WhatsAppIcon />
+      </a>
     </>
   );
 }

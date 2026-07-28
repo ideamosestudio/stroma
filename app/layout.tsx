@@ -8,7 +8,7 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 export const metadata: Metadata = {
   title: "STROMA | Gestión estratégica de servicios críticos",
   description:
-    "Gestión de la contratación y el desempeño de servicios de alimentación y soluciones integrales para campamentos remotos.",
+    "Acompañamos a las organizaciones en la contratación y el desempeño de servicios de alimentación y Facility Management.",
   icons: {
     icon: `${basePath}/stroma-logo.png`,
     shortcut: `${basePath}/stroma-logo.png`,
