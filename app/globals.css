@@ -84,7 +84,7 @@ a {
   right: 0;
   height: var(--header-height);
   display: grid;
-  grid-template-columns: 190px 1fr 210px;
+  grid-template-columns: 210px 1fr 210px;
   align-items: center;
   gap: 24px;
   padding: 0 max(24px, calc((100vw - 1200px) / 2));
@@ -99,7 +99,7 @@ a {
 
 .brand {
   display: inline-flex;
-  width: 148px;
+  width: 180px;
 }
 
 .brand img,
@@ -117,9 +117,9 @@ a {
 
 .main-nav a {
   position: relative;
-  color: var(--ash);
+  color: var(--paper);
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   white-space: nowrap;
   transition: color 180ms ease;
 }
@@ -997,7 +997,11 @@ p {
 
 @media (max-width: 1100px) {
   .site-header {
-    grid-template-columns: 150px 1fr 190px;
+    grid-template-columns: 165px 1fr 190px;
+  }
+
+  .brand {
+    width: 150px;
   }
 
   .main-nav {
@@ -1060,7 +1064,7 @@ p {
   }
 
   .brand {
-    width: 130px;
+    width: 150px;
   }
 
   .button--header {
