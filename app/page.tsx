@@ -284,7 +284,8 @@ export default function Home() {
 
           <div className="priorities">
             <p className="priorities__intro reveal">
-              Las decisiones que definen el servicio integran prioridades como:
+              Un servicio crítico no se mide por un único indicador. Su
+              desempeño depende de factores como:
             </p>
             <div className="priorities__grid">
               {servicePriorities.map((item) => (
