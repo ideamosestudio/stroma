@@ -435,7 +435,7 @@ p {
 .section-heading {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  align-items: end;
+  align-items: center;
   margin-bottom: 70px;
 }
 
