@@ -178,7 +178,7 @@ export default function Home() {
     <>
       <header className={`site-header ${scrolled ? "site-header--scrolled" : ""}`}>
         <a className="brand" href="#inicio" aria-label="STROMA, ir al inicio">
-          <img src={`${BASE_PATH}/stroma-logo.png`} alt="STROMA" />
+          <img src={`${BASE_PATH}/stroma-logo-full-white.png`} alt="STROMA Service Management" />
         </a>
 
         <button
