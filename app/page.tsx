@@ -221,8 +221,8 @@ export default function Home() {
             <span className="eyebrow">Metodología propia · Decisiones de alto impacto</span>
             <h1>Los servicios críticos requieren una gestión estratégica.</h1>
             <p>
-              Acompañamos a las organizaciones en la contratación y el desempeño
-              de los servicios de alimentación y Facility Management.
+              Gestionamos estratégicamente la contratación y el desempeño de
+              los servicios de alimentación y facility management.
             </p>
             <a className="button" href="#contacto">Solicitar una reunión</a>
           </div>
