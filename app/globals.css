@@ -859,13 +859,16 @@ p {
 .metric h3 {
   margin: 38px 0 16px;
   font-size: 20px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: -0.035em;
 }
 
 .metric p {
   margin: 0;
-  font-size: 14px;
+  color: var(--ash);
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 .contact {
