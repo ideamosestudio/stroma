@@ -440,16 +440,18 @@ export default function Home() {
           <a href="#experiencia">Experiencia</a>
           <a href="#contacto">Contacto</a>
         </nav>
-        <a href={LINKEDIN_URL} target="_blank" rel="noreferrer">LinkedIn</a>
-        <span>© {new Date().getFullYear()} STROMA</span>
-        <a
-          className="site-footer__credit"
-          href="https://www.ideamos.com.ar"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Un desarrollo de Estudio Ideamos
-        </a>
+        <div className="site-footer__legal">
+          <a href={LINKEDIN_URL} target="_blank" rel="noreferrer">LinkedIn</a>
+          <span>© {new Date().getFullYear()} STROMA</span>
+          <a
+            className="site-footer__credit"
+            href="https://www.ideamos.com.ar"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Un desarrollo de Estudio Ideamos
+          </a>
+        </div>
       </footer>
 
       <a
