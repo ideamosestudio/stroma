@@ -350,7 +350,7 @@ export default function Home() {
               <p>
                 Hoy, esa experiencia se transforma en una metodología propia que
                 ayuda a las organizaciones a tomar mejores decisiones y maximizar
-                el valor de sus servicios.
+                el valor de los servicios que respaldan la operación.
               </p>
               <a
                 className="button button--muted"
