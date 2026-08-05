@@ -263,9 +263,9 @@ export default function Home() {
                 todo su ciclo de vida.
               </p>
               <p className="why__value">
-                Ahí es donde STROMA genera valor: ayudando a las organizaciones a
-                diseñar, contratar y gestionar servicios alineados con los
-                objetivos del negocio.
+                Ahí es donde STROMA genera valor: diseñando, contratando y
+                gestionando estratégicamente los servicios de alimentación y
+                facility management, alineados con los objetivos del negocio.
               </p>
             </div>
 
