@@ -501,7 +501,7 @@ p {
 .value-card h4 {
   margin: 0;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .priorities {
@@ -969,8 +969,8 @@ p {
   gap: 18px;
 }
 
-.site-footer__brand img {
-  width: 140px;
+.site-footer__logo {
+  width: 180px;
 }
 
 .site-footer nav {

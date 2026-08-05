@@ -427,7 +427,11 @@ export default function Home() {
 
       <footer className="site-footer">
         <div className="site-footer__brand">
-          <img src={`${BASE_PATH}/stroma-logo.png`} alt="STROMA" />
+          <img
+            className="site-footer__logo"
+            src={`${BASE_PATH}/stroma-logo-full-white.png`}
+            alt="STROMA Service Management"
+          />
           <span>Gestión estratégica de servicios críticos.</span>
         </div>
         <nav aria-label="Navegación de pie de página">
