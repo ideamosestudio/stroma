@@ -969,8 +969,8 @@ p {
   gap: 18px;
 }
 
-.site-footer__logo {
-  width: 180px;
+.site-footer__brand img {
+  width: 90px;
 }
 
 .site-footer nav {
