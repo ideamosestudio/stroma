@@ -251,8 +251,8 @@ export default function Home() {
           <div className="why__layout">
             <div className="why__copy reveal">
               <p>
-                En sectores donde los servicios de alimentación y Facility
-                Management son críticos para la operación, las decisiones sobre
+                En sectores donde los servicios de alimentación y facility
+                management son críticos para la operación, las decisiones sobre
                 su contratación y gestión impactan directamente en la continuidad
                 operacional, la seguridad, la experiencia de las personas y los
                 resultados del negocio.
