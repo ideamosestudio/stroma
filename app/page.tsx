@@ -59,7 +59,7 @@ const lifecycle = [
 const experienceCards: Array<{ title: string; text: string; icon: IconKind }> = [
   {
     title: "Conocimiento del servicio",
-    text: "Más de 25 años liderando empresas prestadoras de servicios de alimentación y Facility Management.",
+    text: "Más de 25 años liderando empresas prestadoras de servicios de alimentación y facility management.",
     icon: "orbit",
   },
   {
