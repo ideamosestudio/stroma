@@ -875,25 +875,25 @@ p {
 }
 
 .contact__intro h2 {
-  font-size: clamp(42px, 4.7vw, 68px);
+  font-size: clamp(30px, 2.8vw, 40px);
 }
 
 .contact__intro > p {
   max-width: 480px;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .contact-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px 24px;
-  padding: 40px;
+  gap: 22px 20px;
+  padding: 28px;
   border: 1px dashed var(--graphite);
 }
 
 .contact-form label {
   display: grid;
-  gap: 10px;
+  gap: 6px;
 }
 
 .contact-form label > span {
@@ -917,11 +917,13 @@ p {
 }
 
 .contact-form input {
-  height: 44px;
+  height: 36px;
+  font-size: 14px;
 }
 
 .contact-form textarea {
-  min-height: 110px;
+  min-height: 84px;
+  font-size: 14px;
   resize: vertical;
 }
 
