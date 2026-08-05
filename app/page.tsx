@@ -340,7 +340,7 @@ export default function Home() {
               <p className="experience__intro">
                 STROMA fue fundada por Helvio Frieiro, ejecutivo con más de 25
                 años de experiencia liderando empresas de servicios de
-                alimentación y Facility Management en América Latina.
+                alimentación y facility management en América Latina.
               </p>
               <p>
                 Su trayectoria en operaciones complejas, procesos de contratación
