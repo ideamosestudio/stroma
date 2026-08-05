@@ -190,7 +190,7 @@ a {
 .section-shell {
   width: var(--page);
   margin: 0 auto;
-  padding: 120px 0;
+  padding: 92px 0;
 }
 
 .section-index,
@@ -1137,8 +1137,8 @@ p {
   }
 
   .section-shell {
-    padding-top: 90px;
-    padding-bottom: 90px;
+    padding-top: 68px;
+    padding-bottom: 68px;
   }
 
   .section-heading,
