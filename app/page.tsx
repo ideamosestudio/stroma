@@ -240,16 +240,15 @@ export default function Home() {
         </section>
 
         <section className="why section-shell blueprint-section" id="por-que-stroma">
-          <div className="section-heading reveal">
-            <span className="section-index">Por qué STROMA</span>
-            <h2>
-              El desempeño del servicio depende tanto del proveedor como de quien
-              lo contrata.
-            </h2>
-          </div>
-
           <div className="why__layout">
             <div className="why__copy reveal">
+              <div className="section-heading">
+                <span className="section-index">Por qué STROMA</span>
+                <h2>
+                  El desempeño del servicio depende tanto del proveedor como de
+                  quien lo contrata.
+                </h2>
+              </div>
               <p>
                 En sectores donde los servicios de alimentación y facility
                 management son críticos para la operación, las decisiones sobre

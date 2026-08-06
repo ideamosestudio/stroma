@@ -436,7 +436,7 @@ p {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
-  margin-bottom: 70px;
+  margin-bottom: 36px;
 }
 
 .section-heading h2 {
@@ -463,6 +463,12 @@ p {
   color: var(--paper);
   font-size: 19px;
   font-weight: 500;
+}
+
+.value-areas {
+  position: sticky;
+  top: calc(var(--header-height) + 32px);
+  align-self: start;
 }
 
 .value-areas h3 {
@@ -1163,6 +1169,11 @@ p {
 
   .why__layout {
     gap: 60px;
+  }
+
+  .value-areas {
+    position: static;
+    top: auto;
   }
 
   .process__heading {
