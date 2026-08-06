@@ -469,6 +469,7 @@ p {
   position: sticky;
   top: calc(var(--header-height) + 32px);
   align-self: start;
+  margin-top: 37px;
 }
 
 .value-areas h3 {
@@ -1174,6 +1175,7 @@ p {
   .value-areas {
     position: static;
     top: auto;
+    margin-top: 0;
   }
 
   .process__heading {
