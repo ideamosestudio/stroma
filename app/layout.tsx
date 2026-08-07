@@ -10,8 +10,16 @@ export const metadata: Metadata = {
   description:
     "Acompañamos a las organizaciones en la contratación y el desempeño de servicios de alimentación y facility management.",
   icons: {
-    icon: `${basePath}/stroma-logo.png`,
-    shortcut: `${basePath}/stroma-logo.png`,
+    icon: [
+      { url: `${basePath}/favicon.svg`, type: "image/svg+xml" },
+      { url: `${basePath}/favicon-16.png`, sizes: "16x16", type: "image/png" },
+      { url: `${basePath}/favicon-32.png`, sizes: "32x32", type: "image/png" },
+      { url: `${basePath}/favicon-48.png`, sizes: "48x48", type: "image/png" },
+      { url: `${basePath}/icon-192.png`, sizes: "192x192", type: "image/png" },
+      { url: `${basePath}/icon-512.png`, sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: `${basePath}/favicon.ico`,
+    apple: `${basePath}/apple-touch-icon.png`,
   },
 };
 
