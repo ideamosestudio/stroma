@@ -1031,7 +1031,7 @@ p {
   }
 
   .main-nav a {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .hero__visual {
@@ -1049,18 +1049,15 @@ p {
   }
 
   .lifecycle__rail {
-    top: 30px;
+    top: 46px;
     bottom: 30px;
-    left: 29px;
+    left: 46px;
     width: 1px;
-    height: auto;
-    background:
-      repeating-linear-gradient(180deg, var(--graphite) 0 6px, transparent 6px 12px);
   }
 
   .lifecycle-step {
     display: grid;
-    grid-template-columns: 60px 1fr;
+    grid-template-columns: 94px 1fr;
     gap: 32px;
     padding: 0 0 48px;
   }
@@ -1071,6 +1068,11 @@ p {
 
   .lifecycle-step h3 {
     min-height: 0;
+  }
+
+  .why__layout {
+    grid-template-columns: minmax(0, 1fr) minmax(380px, 0.9fr);
+    gap: 44px;
   }
 }
 
@@ -1204,6 +1206,125 @@ p {
     grid-column: 1 / -1;
     margin-top: 8px;
   }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  .site-header {
+    z-index: 200;
+  }
+
+  .brand,
+  .menu-toggle {
+    position: relative;
+    z-index: 202;
+  }
+
+  .main-nav {
+    position: fixed;
+    z-index: 201;
+    inset: 0;
+    display: grid;
+    min-height: 100svh;
+    padding: 128px 28px 40px;
+    align-content: center;
+    background:
+      radial-gradient(circle at 85% 20%, rgba(24, 112, 255, 0.24), transparent 35%),
+      linear-gradient(145deg, rgba(4, 8, 24, 0.98), rgba(2, 4, 14, 0.99));
+    backdrop-filter: blur(20px);
+    border: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale(1.03);
+    transition:
+      opacity 380ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 0s linear 420ms;
+  }
+
+  .main-nav--open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: scale(1);
+    transition:
+      opacity 380ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 0s linear 0s;
+  }
+
+  .main-nav a {
+    padding: 13px 0;
+    border-color: rgba(74, 114, 180, 0.28);
+    font-size: clamp(19px, 6vw, 26px);
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 320ms ease, transform 320ms ease, color 180ms ease;
+  }
+
+  .main-nav--open a {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .main-nav--open a:nth-child(1) { transition-delay: 90ms; }
+  .main-nav--open a:nth-child(2) { transition-delay: 130ms; }
+  .main-nav--open a:nth-child(3) { transition-delay: 170ms; }
+  .main-nav--open a:nth-child(4) { transition-delay: 210ms; }
+  .main-nav--open a:nth-child(5) { transition-delay: 250ms; }
+  .main-nav--open a:nth-child(6) { transition-delay: 290ms; }
+
+  .section-index {
+    font-size: 11px;
+  }
+
+  .main-nav__cta {
+    display: inline-flex !important;
+    width: fit-content;
+    margin-top: 22px;
+    padding: 11px 20px !important;
+    border: 1px solid rgba(75, 170, 255, 0.7) !important;
+    border-radius: 999px;
+    font-size: 13px !important;
+    letter-spacing: 0 !important;
+  }
+
+  .menu-toggle {
+    transition: border-color 320ms cubic-bezier(0.65, 0, 0.35, 1),
+      background-color 320ms cubic-bezier(0.65, 0, 0.35, 1),
+      transform 220ms cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .menu-toggle:active {
+    transform: scale(0.9);
+  }
+
+  .menu-open .menu-toggle {
+    border-color: rgba(75, 170, 255, 0.7);
+    background: rgba(24, 112, 255, 0.12);
+  }
+
+  .menu-open .menu-toggle > span:first-child {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .menu-open .menu-toggle > span:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  .menu-open .menu-toggle > span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  .menu-toggle > span:not(.sr-only) {
+    transition: transform 320ms cubic-bezier(0.65, 0, 0.35, 1),
+      opacity 220ms ease;
+  }
 }
 
 @media (max-width: 560px) {
@@ -1271,7 +1392,85 @@ p {
 
   .site-footer {
     grid-template-columns: 1fr;
-    gap: 34px;
+    justify-items: center;
+    gap: 32px;
+    padding: 56px 0 44px;
+    text-align: center;
+  }
+
+  .site-footer__brand {
+    justify-items: center;
+  }
+
+  .site-footer__brand img {
+    width: 128px;
+  }
+
+  .site-footer nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 20px;
+  }
+
+  .site-footer__legal {
+    justify-content: center;
+    gap: 8px 14px;
+  }
+
+  .site-footer__legal > :not(:first-child) {
+    position: relative;
+    padding-left: 16px;
+  }
+
+  .site-footer__legal > :not(:first-child)::before {
+    content: "·";
+    position: absolute;
+    left: 5px;
+    color: var(--graphite);
+  }
+
+  .lifecycle-step {
+    grid-template-columns: 78px 1fr;
+    gap: 22px;
+  }
+
+  .lifecycle-step__node {
+    width: 78px;
+    height: 78px;
+  }
+
+  .lifecycle-step__node span {
+    font-size: 30px;
+  }
+
+  .lifecycle__rail {
+    top: 39px;
+    left: 38px;
+  }
+
+  .value-areas__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .value-card {
+    min-height: 96px;
+  }
+
+  .priorities {
+    margin-top: 50px;
+  }
+
+  .whatsapp-float {
+    right: 17px;
+    bottom: calc(17px + env(safe-area-inset-bottom, 0px));
+    width: 50px;
+    height: 50px;
+  }
+
+  .whatsapp-float svg {
+    width: 23px;
+    height: 23px;
   }
 }
 
@@ -1607,237 +1806,28 @@ p {
   50% { transform: translateY(-6px); box-shadow: 0 0 36px rgba(28, 122, 255, 0.3); }
 }
 
+/* Cancels the desktop lifecycle-node float offset set below; must stay
+   after that rule in source order to win the cascade. */
 @media (max-width: 1100px) {
-  .main-nav a {
-    font-size: 13px;
-  }
-
-  .why__layout {
-    grid-template-columns: minmax(0, 1fr) minmax(380px, 0.9fr);
-    gap: 44px;
-  }
-
   .lifecycle-step__node {
     margin-top: 0;
   }
-
-  .lifecycle__rail {
-    top: 46px;
-    left: 46px;
-  }
-
-  .lifecycle-step {
-    grid-template-columns: 94px 1fr;
-  }
 }
 
+/* .site-footer's grid-template-columns must stay after the unconditional
+   .site-footer rule above (which also sets align-items) to keep winning
+   the cascade at this breakpoint. */
 @media (max-width: 860px) {
-  body.menu-open {
-    overflow: hidden;
-  }
-
-  .site-header {
-    z-index: 200;
-  }
-
-  .brand,
-  .menu-toggle {
-    position: relative;
-    z-index: 202;
-  }
-
-  .main-nav {
-    position: fixed;
-    z-index: 201;
-    inset: 0;
-    display: grid;
-    min-height: 100svh;
-    padding: 128px 28px 40px;
-    align-content: center;
-    background:
-      radial-gradient(circle at 85% 20%, rgba(24, 112, 255, 0.24), transparent 35%),
-      linear-gradient(145deg, rgba(4, 8, 24, 0.98), rgba(2, 4, 14, 0.99));
-    backdrop-filter: blur(20px);
-    border: 0;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: scale(1.03);
-    transition:
-      opacity 380ms cubic-bezier(0.16, 1, 0.3, 1),
-      transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
-      visibility 0s linear 420ms;
-  }
-
-  .main-nav--open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: scale(1);
-    transition:
-      opacity 380ms cubic-bezier(0.16, 1, 0.3, 1),
-      transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
-      visibility 0s linear 0s;
-  }
-
-  .main-nav a {
-    padding: 13px 0;
-    border-color: rgba(74, 114, 180, 0.28);
-    font-size: clamp(19px, 6vw, 26px);
-    font-weight: 600;
-    letter-spacing: -0.5px;
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 320ms ease, transform 320ms ease, color 180ms ease;
-  }
-
-  .main-nav--open a {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .main-nav--open a:nth-child(1) { transition-delay: 90ms; }
-  .main-nav--open a:nth-child(2) { transition-delay: 130ms; }
-  .main-nav--open a:nth-child(3) { transition-delay: 170ms; }
-  .main-nav--open a:nth-child(4) { transition-delay: 210ms; }
-  .main-nav--open a:nth-child(5) { transition-delay: 250ms; }
-  .main-nav--open a:nth-child(6) { transition-delay: 290ms; }
-
-  .section-index {
-    font-size: 11px;
-  }
-
-  .main-nav__cta {
-    display: inline-flex !important;
-    width: fit-content;
-    margin-top: 22px;
-    padding: 11px 20px !important;
-    border: 1px solid rgba(75, 170, 255, 0.7) !important;
-    border-radius: 999px;
-    font-size: 13px !important;
-    letter-spacing: 0 !important;
-  }
-
-  .why__layout {
-    grid-template-columns: 1fr;
-    gap: 60px;
-  }
-
-  .menu-toggle {
-    transition: border-color 320ms cubic-bezier(0.65, 0, 0.35, 1),
-      background-color 320ms cubic-bezier(0.65, 0, 0.35, 1),
-      transform 220ms cubic-bezier(0.65, 0, 0.35, 1);
-  }
-
-  .menu-toggle:active {
-    transform: scale(0.9);
-  }
-
-  .menu-open .menu-toggle {
-    border-color: rgba(75, 170, 255, 0.7);
-    background: rgba(24, 112, 255, 0.12);
-  }
-
-  .menu-open .menu-toggle > span:first-child {
-    transform: translateY(6px) rotate(45deg);
-  }
-
-  .menu-open .menu-toggle > span:nth-child(2) {
-    opacity: 0;
-    transform: scale(0);
-  }
-
-  .menu-open .menu-toggle > span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-  }
-
-  .menu-toggle > span:not(.sr-only) {
-    transition: transform 320ms cubic-bezier(0.65, 0, 0.35, 1),
-      opacity 220ms ease;
-  }
-
   .site-footer {
     grid-template-columns: 1fr 1fr;
   }
 }
 
+/* These overrides must stay after their unconditional counterparts further
+   above to keep winning the cascade at this breakpoint. */
 @media (max-width: 560px) {
-  h1 {
-    font-size: clamp(42px, 13vw, 58px);
-  }
-
-  h2 {
-    font-size: clamp(34px, 10vw, 46px);
-  }
-
-  .lifecycle-step {
-    grid-template-columns: 78px 1fr;
-  }
-
-  .lifecycle-step__node {
-    width: 78px;
-    height: 78px;
-  }
-
-  .lifecycle-step__node span {
-    font-size: 30px;
-  }
-
-  .lifecycle__rail {
-    top: 39px;
-    left: 38px;
-  }
-
   .site-footer {
     grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 32px;
-    padding: 56px 0 44px;
-    text-align: center;
-  }
-
-  .site-footer__brand {
-    justify-items: center;
-  }
-
-  .site-footer__brand img {
-    width: 128px;
-  }
-
-  .site-footer nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px 20px;
-  }
-
-  .site-footer__legal {
-    justify-content: center;
-    gap: 8px 14px;
-  }
-
-  .site-footer__legal > :not(:first-child) {
-    position: relative;
-    padding-left: 16px;
-  }
-
-  .site-footer__legal > :not(:first-child)::before {
-    content: "·";
-    position: absolute;
-    left: 5px;
-    color: var(--graphite);
-  }
-
-  .value-areas__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .value-card {
-    min-height: 96px;
-  }
-
-  .priorities {
-    margin-top: 50px;
   }
 
   .whatsapp-float {
@@ -1850,6 +1840,23 @@ p {
   .whatsapp-float svg {
     width: 23px;
     height: 23px;
+  }
+
+  .lifecycle-step__node {
+    width: 78px;
+    height: 78px;
+  }
+
+  .lifecycle-step__node span {
+    font-size: 30px;
+  }
+
+  h1 {
+    font-size: clamp(42px, 13vw, 58px);
+  }
+
+  h2 {
+    font-size: clamp(34px, 10vw, 46px);
   }
 }
 

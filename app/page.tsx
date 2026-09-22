@@ -133,6 +133,7 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [formMessage, setFormMessage] = useState("");
+  const [submitting, setSubmitting] = useState(false);
   const [contactRegionVisible, setContactRegionVisible] = useState(false);
 
   useEffect(() => {
@@ -167,11 +168,33 @@ export default function Home() {
 
   const closeMenu = () => setMenuOpen(false);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setFormMessage(
-      "El formulario está listo. Falta definir la dirección de envío para activarlo.",
-    );
+    const form = event.currentTarget;
+    setSubmitting(true);
+    setFormMessage("Enviando...");
+
+    try {
+      const response = await fetch(
+        `https://formsubmit.co/ajax/${CONTACT_EMAIL}`,
+        {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: new FormData(form),
+        },
+      );
+
+      if (!response.ok) throw new Error("request failed");
+
+      setFormMessage("¡Gracias! Recibimos tu mensaje y te contactaremos a la brevedad.");
+      form.reset();
+    } catch {
+      setFormMessage(
+        `No pudimos enviar el formulario. Escribinos directamente a ${CONTACT_EMAIL}.`,
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -394,8 +417,9 @@ export default function Home() {
             </div>
           </div>
 
-          {/* PLACEHOLDER: conectar la acción real del formulario. */}
           <form className="contact-form reveal" onSubmit={handleSubmit}>
+            <input type="hidden" name="_subject" value="Nueva consulta desde stromaservices.com" />
+            <input type="hidden" name="_template" value="table" />
             <label>
               <span>Nombre</span>
               <input name="name" type="text" autoComplete="name" required />
@@ -416,7 +440,9 @@ export default function Home() {
               <span>Mensaje</span>
               <textarea name="message" rows={4} required />
             </label>
-            <button className="button" type="submit">Solicitar una reunión</button>
+            <button className="button" type="submit" disabled={submitting}>
+              {submitting ? "Enviando..." : "Solicitar una reunión"}
+            </button>
             <p className="form-status" role="status" aria-live="polite">
               {formMessage}
             </p>
