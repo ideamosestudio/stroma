@@ -21,10 +21,20 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* Smooth scrolling is handled by Lenis (see smooth-scroll-provider.tsx);
+     native scroll-behavior stays "auto" so the two don't fight. */
   scroll-padding-top: var(--header-height);
   background: var(--void);
   overflow-x: clip;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
 
 body {

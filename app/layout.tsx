@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/700.css";
 import "./globals.css";
+import SmoothScrollProvider from "./smooth-scroll-provider";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const siteUrl = "https://stromaservices.com";
@@ -108,7 +109,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
-        {children}
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>
     </html>
   );

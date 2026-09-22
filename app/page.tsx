@@ -2,6 +2,7 @@
 
 /* eslint-disable @next/next/no-img-element */
 import { FormEvent, useEffect, useState } from "react";
+import { useLenis } from "lenis/react";
 
 type IconKind =
   | "orbit"
@@ -135,6 +136,32 @@ export default function Home() {
   const [formMessage, setFormMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [contactRegionVisible, setContactRegionVisible] = useState(false);
+  const lenis = useLenis();
+
+  useEffect(() => {
+    if (!lenis) return;
+
+    // Lenis already reads the `scroll-padding-top` set on <html> (see
+    // globals.css) to clear the fixed header, so the offset here is only
+    // the extra breathing room below it.
+    const handleAnchorClick = (event: MouseEvent) => {
+      const link = (event.target as HTMLElement).closest<HTMLAnchorElement>(
+        'a[href^="#"]',
+      );
+      if (!link) return;
+
+      const id = link.getAttribute("href");
+      if (!id || id === "#") return;
+      const target = document.querySelector(id);
+      if (!target) return;
+
+      event.preventDefault();
+      lenis.scrollTo(target as HTMLElement, { offset: -16 });
+    };
+
+    document.addEventListener("click", handleAnchorClick);
+    return () => document.removeEventListener("click", handleAnchorClick);
+  }, [lenis]);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24);
