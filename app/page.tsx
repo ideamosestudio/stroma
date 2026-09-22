@@ -501,7 +501,8 @@ export default function Home() {
             target="_blank"
             rel="noreferrer"
           >
-            Un desarrollo de Estudio Ideamos
+            <span>Un desarrollo de</span>
+            <img src={`${BASE_PATH}/ideamos-logo.webp`} alt="Ideamos" />
           </a>
         </div>
       </footer>

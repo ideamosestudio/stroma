@@ -10,11 +10,14 @@ export default function SmoothScrollProvider({
 }: {
   children: ReactNode;
 }) {
-  const [reducedMotion, setReducedMotion] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
 
   useEffect(() => {
     const query = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReducedMotion(query.matches);
     const onChange = () => setReducedMotion(query.matches);
     query.addEventListener("change", onChange);
     return () => query.removeEventListener("change", onChange);
@@ -26,9 +29,14 @@ export default function SmoothScrollProvider({
     <ReactLenis
       root
       options={{
-        duration: 1.5,
+        // `lerp` controls the continuous mouse-wheel damping (lower = more
+        // trailing/slower); `duration`+`easing` only apply to the
+        // programmatic scrollTo() used for anchor-link clicks below.
+        lerp: 0.065,
+        duration: 1.6,
         easing: easeOutExpo,
         smoothWheel: true,
+        wheelMultiplier: 0.85,
         syncTouch: false,
         anchors: false,
       }}

@@ -28,11 +28,6 @@ html {
   overflow-x: clip;
 }
 
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
@@ -1715,8 +1710,38 @@ p {
 }
 
 .site-footer__credit {
-  color: var(--ash);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--steel);
   white-space: nowrap;
+  opacity: 0.6;
+  transition: opacity 220ms ease;
+}
+
+.site-footer__credit:hover,
+.site-footer__credit:focus-visible {
+  opacity: 1;
+}
+
+.site-footer__credit span {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.site-footer__credit img {
+  display: block;
+  width: 66px;
+  height: auto;
+  filter: grayscale(1) brightness(1.8);
+  transition: filter 220ms ease;
+}
+
+.site-footer__credit:hover img,
+.site-footer__credit:focus-visible img {
+  filter: none;
 }
 
 .whatsapp-float {
